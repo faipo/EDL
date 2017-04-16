@@ -8,7 +8,6 @@
 > Período/Turno: 5º/Noite
 > Professor: Francisco Sant'Anna
 
-
 ### Porque decidi fazer este curso, Ciência da Computação?
 Por causa do interesse que já tinha a muito tempo por esta área de Computação/Informática; inclusive cursei, em meu Ensino Médio, um curso técnico de Informática, mas que via um pouco de cada área da Computação.
 &nbsp;

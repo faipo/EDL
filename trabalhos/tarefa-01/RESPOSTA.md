@@ -1,7 +1,6 @@
 # UERJ - Universidade do Estado do Rio de Janeiro
 &nbsp;
 ## Tarefa 01 - Texto “pessoal” qualquer formatado em MarkDown
-&nbsp;
 
 Aluno: Rafael Teixeira de Oliveira &nbsp;
 Curso: Ciência da Computação &nbsp;

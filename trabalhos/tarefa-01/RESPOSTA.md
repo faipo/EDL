@@ -2,6 +2,7 @@
 &nbsp;
 ## Tarefa 01 - Texto “pessoal” qualquer formatado em MarkDown
 &nbsp;
+
 > Aluno: Rafael Teixeira de Oliveira
 > Curso: Ciência da Computação
 > Disciplina: Estrutura de Linguagens

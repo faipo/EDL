@@ -3,10 +3,10 @@
 ## Tarefa 01 - Texto “pessoal” qualquer formatado em MarkDown
 &nbsp;
 > Aluno: Rafael Teixeira de Oliveira
-Curso: Ciência da Computação
-Disciplina: Estrutura de Linguagens
-Período/Turno: 5º/Noite
-Professor: Francisco Sant'Anna
+> Curso: Ciência da Computação
+> Disciplina: Estrutura de Linguagens
+> Período/Turno: 5º/Noite
+> Professor: Francisco Sant'Anna
 
 
 ### Porque decidi fazer este curso, Ciência da Computação?

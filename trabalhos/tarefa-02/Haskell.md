@@ -52,6 +52,8 @@ Um site, que mostra as influências entre as linguagens de programação mostra 
 
 ![Linguagem Haskell e suas influências](haskell.png)
 
+Fonte: https://exploringdata.github.io/vis/programming-languages-influence-network-2014/#Haskell
+
 ## Classificação do Haskell
 
 **Quanto ao paradigma**: o Haskell é considerado uma linguagem de programação do Paradigma Funcional, ou seja, é uma Linguagem de Programação Funcional. 

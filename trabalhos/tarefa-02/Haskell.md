@@ -195,7 +195,7 @@ function reverso(texto:string):string;
  End.  
 ```
 
-##Conclusão
+## Conclusão
 
 A linguagem Haskell veio com o objetivo de "unificar' todas as linguagens funcionais que existiam até suas criação. Isto facilitou as pesquisas da área, pois ele conseguiu colocar vários recursos que haviam entre as linguagens de programação funcionais em uma só.
 

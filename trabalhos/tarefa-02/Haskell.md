@@ -227,3 +227,8 @@ A Haskell mostra que um problema pode ser visto como uma sequência de execuçã
 * (LIMA, M. A. V.) Introdução a Programação ao Funcional - Linguagem Haskell: http://www.facom.ufu.br/~madriana/PF/hs.pdf
 
 * HaskellWiki: https://wiki.haskell.org/Haskell
+
+* (VEDOVATTO, T., COSTA, E. T.) Haskell: uma linguagem de programação ideal para matemáticos: http://matematicajatai.com/rematFiles/3-2013/haskell.pdf
+
+* Aprender Haskell será um grande bem para você!: http://haskell.tailorfontela.com.br/
+

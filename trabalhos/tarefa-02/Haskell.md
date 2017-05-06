@@ -4,14 +4,13 @@
 
 A linguagem de programação Haskell surgiu em 1990, mas a história das linguagens funcionais (sua definição será vista posteriormente) começou bem antes disso. Tudo isso começa na década de 1930.
 
-* Década de 1930: Alonzo Church cria o Cálculo Lambda. Seu propósito não era para ser usado em computadores, mas sim era mostrar (em forma de modelo matemático) as relações que haviam entre as funções. A partir deste modelo  matemático criado por ele, era possível mostrar que, a partir de funções simples que se relacionavam, era possível criar funções mais complexas, podendo, muito amplamente, modelar comportamentos.
+* Década de 1930: Alonzo Church cria o Cálculo Lambda. Seu propósito não era para ser usado em computadores, mas sim era mostrar (em forma de modelo matemático) as relações que haviam entre as funções. A partir deste modelo matemático criado por ele, era possível mostrar que, a partir de funções simples que se relacionavam, era possível criar funções mais complexas, podendo, muito amplamente, modelar comportamentos.
 
 * Década de 1950: é criada a primeira linguagem de programação que continha cálculo Lambda, o LISP. Esta linguagem foi criada por John McCarthy. Foi considerada a segunda linguagem de programação criada no mundo, a primeira foi FORTRAN.  Até hoje sistemas são feitos em Lisp, principalmente para uso em Inteligência Artificial. **Observação:** não era uma linguagem 100% funcional, pois havia elementos da programação imperativa, como a atribuições de variáveis, mudanças de estados, entre outros. 
 
 *  Década de 1960: é criada a primeira linguagem de programação que era puramente funcional, grandemente baseada em cálculo Lambda, a linguagem ISWIN.
 
-* Década de 1970: é desenvolvido a linguagem FP (*Functional Programming*, em português "Programação Funcional"), "uma linguagem de programação
-funcional que enfatiza as funções de alto nível" (VEDOVATTO, COSTA, p. 3). Além disso, é criada a linguagem ML, considerada a primeira linguagem de programação funcional moderna, pois criava o conceito de polimorfismo de funções.
+* Década de 1970: é desenvolvido a linguagem FP (*Functional Programming*, em português "Programação Funcional"), "uma linguagem de programação funcional que enfatiza as funções de alto nível" (VEDOVATTO, COSTA, p. 3). Além disso, é criada a linguagem ML, considerada a primeira linguagem de programação funcional moderna, pois criava o conceito de polimorfismo de funções.
 
 * 1978: a grande "alavanca" da programação funcional. John Backus, criador do BNF, publicou um artigo, onde nele ele criticava as linguagens imperativas, pois, segundo ele, as novas gerações de linguagens herdariam falhas de projeto das linguagens antigas e adicionariam novas falhas; estas, por sua vez, seriam herdadas pelas próximas gerações. Assim, essas linguagens apenas cresceriam de tamanho (ou, segundo ele, apenas engordavam), porém, não aumentariam seu poder. Neste artigo, tal argumentação foi demonstrada, e assim exaltando a Programação Funcional.
 
@@ -24,7 +23,7 @@ funcional que enfatiza as funções de alto nível" (VEDOVATTO, COSTA, p. 3). Al
 	- Que devesse reduzir a diversidade desnecessária de linguagens funcionais que existiam;
 	- Que não fosse proprietária, ou seja, que fosse aberta, a ponto de qualquer um poder implementá-la e distribuí-la;
 	- Que se baseasse nas melhores práticas que houvessem nas linguagens funcionais; 
-	- Entre outros.  
+	- Entre outros.
 
 * 1º de Abril de 1990: é definida,e lançada, a primeira versão do Haskell. Foi criada por Simon Peyton-Jones, Paul Hudak e Philip Walder. O nome da linguagem, Haskell, é em homenagem ao lógico Haskell Curry.  
 
@@ -43,6 +42,8 @@ Um dos conceitos mais importantes da programação funcionais é o conceito de *
 Avaliação preguiçosa é uma estratégia de avaliação que "segura" a avaliação de uma expressão até o momento que seja necessário o seu valor, atrasa a computação até seu resultado seja necessário.
 
 É o oposto da avaliação ansiosa, onde neste tipo de avaliação, na primeira vez que encontra a expressão, já é avaliada, e já é visto seu valor.
+
+Sua importância será vista posteriormente
 
 ## Influências do Haskell
 
@@ -75,8 +76,7 @@ Outras características da Programação Funcional:
 
 **Compilada ou Interpretada?** A linguagem Haskell possui um interpretador interativo, similar ao que o Python tem, mas a linguagem Haskell também é compilada. Ou seja, você pode compilar um código Haskell para rodar em forma de EXE, ou interpretá-lo, como um script.
 
-**Quanto ao uso**: "Apesar da citada proximidade com a matemática, a linguagem Haskell é uma linguagem
-de propósito geral; portanto, pode-se criar qualquer tipo de programa com ela" (VEDOVATTO, COSTA). Ou seja, pode parecer que seja para o fim específico da Computação Científica, mas não é o foco do Haskell. Ela tem o foco geral que uso em sistemas em geral, além de ser usada no ensino e pesquisa.
+**Quanto ao uso**: "Apesar da citada proximidade com a matemática, a linguagem Haskell é uma linguagem de propósito geral; portanto, pode-se criar qualquer tipo de programa com ela" (VEDOVATTO, COSTA). Ou seja, pode parecer que seja para o fim específico da Computação Científica, mas não é o foco do Haskell. Ela tem o foco geral que uso em sistemas em geral, além de ser usada no ensino e pesquisa.
 
 ## Avaliação da linguagem Haskell, quanto a redigibilidade e legibilidade (writability x readability)
 
@@ -124,78 +124,46 @@ Um código programado em C para resolver o mesmo problema usou o quádruplo de l
 
 Em contrapartida, essa "condensação de código" por parte do Haskell pode gerar uma queda no quesito legibilidade, pois com código menores, mais difícil fica entender qual o propósito do programa. Tal diferença talvez pode não ser vista nestes códigos, pois o problema é um problema menor, mas em casos maiores, a legibilidade fica mais a desejar no caso do Haskell em relação ao C, por exemplo. 
 
-## Avaliação da linguagem Haskell, quanto a expressividade
+## A expressividade da linguagem Haskell, em relação a outras
 
-Quanto ao quesito expressividade, um recurso que pode tornar o Haskell mais expressivo que a linguagem Pascal, por exemplo, é ao fato da linguagem funcional poder usar tuplas em seus programas funcionais. Qual seria a justificativa para se dizer que o Haskell é mais expressivo que o Pascal, dado este recurso que a linguagem funcional tem? A justificativa é a de que este recurso que possui no Haskell não pode ser usado diretamente no Pascal; para se ter tal recurso "artificialmente" na linguagem imperativa, deve-se usar um recurso chamado "record" do Pascal, que simularia o efeito de tuplas do Haskell.
+Como já foi dito anteriormente, a linguagem Haskell possui um recurso, que é o da avaliação lazy, onde ele só vai avaliar a expressão somente quando for necessário.
 
-Seja o seguinte problema: existe uma lista de tuplas, onde cada uma delas tem um nome e um número inteiro qualquer. Deseja-se exibir, dentro de uma formatação de tupla, onde cada ocorrência aparecerá em forma de par ordenado, os nomes invertidos, e os números somados dos tamanhos dos nomes. Por exemplo: se uma tupla for ("Carlos",100), com o processamento deve exibir ("solraC",106), e a lista de tupla é exibida entre colchetes( [] ).
+Uma das grandes vantagens desse tipo de avaliação é evitar o desperdício de recursos que poderiam ser alocados no programa.
 
-A seguir é visto o código do problema em Haskell:
+Além dessa vantagem, existe outra, que gera um fator de expressividade para a linguagem Haskell, em comparação a outras, que é o de poder fazer **listas infinitas**. Exatamente, listas infinitas.
 
-```haskell  
-module Main where  
-   
-manipulartupla :: ([Char], Int) -> ([Char], Int)  
-manipulartupla (a,b)=(reverse(a),b+length a)  
+Mas como pode ser computacionalmente realizada uma lista infinita, se, em teoria, isto fará com que o sistema "quebre"? Se só houver uma definição de lista infinita, por exemplo, mas ele no programa não for usado, a lista ficará somente na definição. Mas, se ele for pedido dentro do programa, ele só irá avaliar a demanda desejada, ou seja, não avaliaria a lista toda, até porque possui infinitos elementos, mas sim a quantidade de elementos desejados.
 
-r=[("Rafael",250),("Joao",40),("Maria",79),("Camilo",126)]  
- 
-main=print (map manipulartupla r)  
+(Exemplo extraído do site https://marceloparrela.wordpress.com/tag/haskell/) Se houvéssemos, no interpretador *ghci*, estes comandos digitados e executados:
+
+```haskell
+ghci> let a = [1..]  
+ghci> let b = 5^2  
+ghci> print b  
+25
 ```
 
-Observação: as linhas 3 do código em haskell desta seção e do código em haskell da seção anterior tem a função de descrever uma função em haskell, o nome, o tipo de entrada e o tipo de saída.
+O interpretador irá somente computar o 'b', e não irá avaliar a expressão 'a', portanto, 'a' ainda não passará de uma mera definição de lista infinita.
 
-Percebe-se pelo código acima que, com o recurso de tupla, com a função reverse que a linguagem tem, e com a função map que a mesma tem também, o programa resolve o problema com apenas 5 linhas, sendo 3 com funções propriamente ditas. A função reverse, pelo o que o nome diz, tem o objetivo de colocar uma string ao contrário. Já a função map captura todos os elementos da lista, e os executa na função dita posteriormente no código, a função "manipulartupla".
+Usando como base o texto de Parrela, que está na última referência da bibliografia, temos que: no Haskell não há sequência de comandos, e sim definições de funções, que só serão avaliadas quando forem necessárias, no caso do exemplo acima, a lista infinita só seria avaliada se caso houvesse alguma função o usando.
 
-Tais recursos ditos acima não existem na linguagem Pascal. E então: como resolver o mesmo problema em Pascal? Será preciso fazer algumas adaptações para poder codificar o problema em Pascal.
+Veja neste outro exemplo outra referência a lista infinita, desta vez com o seu uso:
 
-* Para o detalhe do uso de tuplas no Pascal, pode-se obter artificialmente por meio de "record", que é um tipo de dado do Pascal onde pode agrupar dados de tipos diferentes, como o deste caso, que tem uma string e um inteiro.
-
-* Para o caso do reverse, que é para colocar uma string ao contrário, não existe tal função em Pascal. Com isso, deve-se implementar uma função que tenha o objetivo de colocar uma string ao contrário.
-
-* E por último, no que diz sobre a função map, o que tem efeito similar a ele no Pascal seria o uso de "for", para varrer por cada elemento do vetor de tuplas, e executar o que deve ser executado.
-
-Observação: a linguagem Pascal não possui recurso de vetor dinâmico, logo, os vetores possuem tamanho fixo, uma quantidade máxima de elementos, diferentemente do Haskell que as listas são dinâmicas, podem variar a quantidade de elementos contidos nele.
-
-O código em Pascal para resolver o problema:
-
-```pascal  
-Program expressividade ;  
-type   
-	tupla= record  
-		nome: string[10];  
-		num: integer;  
-	end;  
-var tup: array[1..4] of tupla;  
-i:integer;  
-function reverso(texto:string):string;  
-    var saida:string;  
-    tam,i:integer;  
-    begin  
-    tam:=length(texto)+1;  
-    for i:=1 to tam do  
-    saida:=saida+texto[tam-i+1];  
-    reverso:=saida;  
-    end;  
- Begin  
- 	tup[1].nome:='Rafael';  
- 	tup[1].num:=250;  
- 	tup[2].nome:='Joao';  
- 	tup[2].num:=40;  
- 	tup[3].nome:='Maria';  
-	tup[3].num:=79;  
- 	tup[4].nome:='Camilo';  
- 	tup[4].num:=126;  
-	write('[');  
-     for i :=1 to 4 do  
-	begin  
-		write('("',reverso(tup[i].nome),'",',tup[i].num+length(tup[i].nome),')');  
-		if i<>4 then  
-			write(',');  
-	end;  
-	write(']');  
- End.  
+```haskell
+ghci> take 15(iterate (2*) 1)
+[1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384]
 ```
+
+Esta linha no interpretador fará o seguinte: o comando mais interno, *iterate*, passeará a lista infinita fazendo a i-ésima função composta definida no primeiro parâmetro, na i-ésima posição, com o valor, determinado no segundo parâmetro (a partir da segunda posição, na primeira é usada o valor dado como parâmetro), isto é, a lista ficaria assim, com a definição usada no exemplo:
+[1,f(1),f(f(1)),f(f(f(1))), ...]
+
+Com isso, a lista é formada pelos valores das potências binárias (1,2,4,8,16, ...).
+
+Contudo, o Haskell não processará toda a lista, avaliará somente a demanda desejada pela função *take*, que tem como finalidade recuperar os n primeiros da lista dada como parâmetro; isto é, os 15 primeiros.
+
+Estes exemplos mostram como a lista infinita pode ser usada no Haskell, ela só será avaliada quando necessária, e ainda assim somente na demanda desejada.
+
+Tal recurso não é possível de ser usado em linguagens mais familiarizadas de todos, como C, Pascal, entre outros, sendo para o Haskell um fator de expressividade a seu favor. 
 
 ## Conclusão
 
@@ -228,7 +196,10 @@ A Haskell mostra que um problema pode ser visto como uma sequência de execuçã
 
 * HaskellWiki: https://wiki.haskell.org/Haskell
 
-* (VEDOVATTO, T., COSTA, E. T.) Haskell: uma linguagem de programação ideal para matemáticos: http://matematicajatai.com/rematFiles/3-2013/haskell.pdf
+* (PARRELA, M.) Haskell Básico – Uma Pequena Introdução – Parte 3: https://marceloparrela.wordpress.com/tag/haskell/
 
-* Aprender Haskell será um grande bem para você!: http://haskell.tailorfontela.com.br/
+* (VASCONCELOS, P.) Listas Infinitas: http://www.dcc.fc.up.pt/~pbv/aulas/pf/slides/aula8.pdf
 
+* Haskell: Lazy Evaluation e Listas: http://aterribili.blogspot.com/2014/02/haskell-lazy-evaluation-e-listas.html
+
+* Um pouco sobre Lazy Evaluation em Haskell: http://blog.haskellbr.com/2016/01/17/lazy-evaluation-em-haskell.html

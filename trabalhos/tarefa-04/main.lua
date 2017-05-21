@@ -24,7 +24,7 @@ end
 function love.update( dt )
 	colidiu()
 	if not perdeu then
-		desc=obstaculo.vel*dt
+		local desc=obstaculo.vel*dt
 		obstaculo.x=obstaculo.x-desc
 		pontuacao=pontuacao+(desc*0.1)
 		testaralturapulo(dt)

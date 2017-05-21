@@ -3,14 +3,6 @@ alturatela = love.graphics.getHeight()
 
 function love.load(  )
 	player={ x=50,  y=400, larg=75, alt=100,chao=400,velpulo=0,altpulo=-200,gravidade=-100}
-	--[[
-		Nome: 		variável "player"
-		Propriedade:	tipo
-		Binding time:	compilação
-		Explicação:	como será uma variável que será usada em todo o programa,
-		mesmo tendo seu escopo dentro do love.load(), ela terá seu tipo definido em tempo
-		de compilação, neste caso, uma tabela.
-	--]]
 	obstaculo={ x=larguratela,  y=400, larg=100, alt=100,vel=100}
 	pontuacao=0
 	--[[
@@ -56,7 +48,14 @@ end
 function love.update( dt )
 	colidiu()
 	if not perdeu then
-		desc=obstaculo.vel*dt
+		local desc=obstaculo.vel*dt
+		--[[
+			Nome: 		variável "desc"
+			Propriedade:	escopo
+			Binding time:	compilação
+			Explicação:	ao definir que 'desc' é uma variável 'local', seu escopo se restringe a função
+			na qual ela está, ou seja, a função 'love.update(dt)', e isso é feito em tempo de compilação.
+		--]]
 		obstaculo.x=obstaculo.x-desc
 		pontuacao=pontuacao+(desc*0.1)
 		testaralturapulo(dt)

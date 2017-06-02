@@ -1,5 +1,11 @@
 larguratela = love.graphics.getWidth()
 alturatela = love.graphics.getHeight()
+ultimaspontuacoes={}
+	--[[
+	Trabalho 06
+	ultimaspontuacoes={}
+	Este é um exemplo de uma array, que conterá valores de ponto flutuante, referentes as últimas pontuações do jogador no jogo, que está sendo construída
+	--]]
 
 function love.load(  )
 	player={ x=50,  y=400, larg=75, alt=100,chao=400,velpulo=0,altpulo=-200,gravidade=-100}
@@ -9,6 +15,7 @@ function love.load(  )
 	obstaculo={ x=larguratela,  y=400, larg=100, alt=100,vel=100}
 	Este é um exemplo de registro (record, struct, ...) com alguns valores inteiros e um valor de ponto flutuante
 	--]]
+	adicionouultima=false
 	pontuacao=0	
 	love.graphics.setFont(love.graphics.newFont(30))
 	perdeu=false
@@ -39,7 +46,6 @@ function love.update( dt )
 end
 
 function love.draw(  )
-	love.graphics.print("Olá",20,30)
 	love.graphics.print(string.format("Pontuação: %.2f",pontuacao),800,30)
 	desenharelementos()
 	if perdeu then
@@ -108,10 +114,6 @@ end
 function fimdejogo()
 	love.graphics.rectangle('fill', 20,20,larguratela-40,alturatela-40)
 	love.graphics.printf({{0,0,0},"Fim de jogo!"},0,100,634,"center",0,2,2,0,0,0,0)
-	--[[
-	Trabalho 06
-	{0,0,0} -  Este é um exemplo de array (vetor) de inteiros
-	--]]
 	
 	--[[
 	Trabalho 06
@@ -123,5 +125,21 @@ function fimdejogo()
 	"center" (um dos parâmetros da função 'love.graphics.printf()') - É um exemplo de enumeração. Um parâmetro da função referida é o alinhamento do texto, que pode ser "center", "right" ou "left", três opções, conjunto de constantes, com isso, seria um exemplo de enumeração em Lua.
 	--]]
 	love.graphics.printf({{0,0,0},"Aperte S para sair ou R para recomeçar o jogo."},0,400,850,"center",0,1.5,1.5,0,0,0,0)
+	historicopont()
+	love.graphics.printf({{0,0,0},string.format("Pontuação média: %.2f",pontuacaomedia())},0,600,850,"center",0,1.5,1.5,0,0,0,0)
+end
 
+function historicopont()
+	if not adicionouultima then
+		ultimaspontuacoes[#ultimaspontuacoes+1]=pontuacao
+	end
+	adicionouultima=true
+end
+
+function pontuacaomedia()
+	sum=0
+	for i=1,#ultimaspontuacoes do
+		sum=sum+ultimaspontuacoes[i]
+	end
+	return sum/#ultimaspontuacoes
 end

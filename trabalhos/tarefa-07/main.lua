@@ -154,7 +154,7 @@ function colidiu()
 						  (player.y+player.alt >= v.y) and 
 						  (player.y <= v.y+v.alt)
 	end
-		  --[[Nesta hora é testado se o obstáculo colidiu com o jogador, fazendo com que a partida seja terminada, informando pontuação do jogo, pontuação média, e dando as opções de recomeçar ou de sair do jogo. Observação: o obstáculo testado é aquele que está se movendo na tela (no caso o de índice 1 da array).
+		  --[[Nesta hora é testado se um obstáculo colidiu com o jogador, fazendo com que a partida seja terminada, informando pontuação do jogo, pontuação média, e dando as opções de recomeçar ou de sair do jogo..
 		  --]]
 end
 

@@ -1,16 +1,21 @@
 larguratela = love.graphics.getWidth()
 alturatela = love.graphics.getHeight()
 ultimaspontuacoes={}
+velocidade=(100/1.05)
+altlinha=505
 
 --[[
 	Tarefa 07
 	Sobre a array 'obstaculos':
 	Escopo: Como no 'default' de toda variável em lua, a array 'obstáculos' é uma variável global, ou seja, pode ser vista em todo o programa.
+	
 	Tempo de Vida: O tempo de vida da array é durante toda a execução do jogo.
+	
 	Alocação: A array é alocada quando é executada a função 'love.load()'.
+	
 	Desalocação: A desalocação acontece quando o jogo é encerrado (fechar na janela, ou, ao perder, apertando a tecla 'S').
-
-	Observação: A cada começo de partida, a array 'obstaculo' é 'resetada', já havendo um elemento na posição 0, que servirá de referência para criação dos outros obstáculos, ao longo do jogo.
+	
+	Observação: A cada começo de partida, a array 'obstaculos' é 'resetada', já havendo um elemento na posição 0, que servirá de referência para criação dos outros obstáculos, ao longo do jogo.
 --]]
 
 function love.load(  )
@@ -20,27 +25,18 @@ function love.load(  )
 	love.graphics.setFont(love.graphics.newFont(30))
 	perdeu=false
 	comecou=false
-	obstaculos={[0]={ x=larguratela,  y=400, larg=100, alt=100,vel=(100/1.05)}}
+	obstaculos={}
 	--[[
 		Tarefa 07
-
 		Sobre um objeto da array 'obstaculos':
-
-		Legenda: 
-		(1): caso em que se refere ao objeto da posição 0 da array.
-		(2): caso em que se refere a um objeto diferente da posição 0.
-
-
+		
 		Escopo: Como a array já é global por si só, todo elemento contido também será global, por consequência.
-		Tempo de Vida: 
-			Para o caso (1): ele acabará tendo como tempo de vida o jogo todo.
-			Para o caso (2): seu tempo de vida será desde o momento em que ele é criado (quando o jogador faz um pulo) até o momento em que ele passa do jogador (considera-se que o jogador passou por aquele obstáculo).
-		Alocação:
-			Para o caso (1): ele será alocado no momento em que é invocado o método 'love.load()'.
-			Para o caso (2): ele será criado, e posteriormente alocado na array, quando o player faz um pulo. Está array seria uma espécie de 'obstáculos que já estão prontos para ir ao jogador'.
-		Desalocação:
-			Para o caso (1): será desalocado quando o jogo encerrar, ser fechado.
-			Para o caso (2): será desalocado quando estiver passado do jogador, ou seja, quando sua localização for menor que a localização do jogador, que nesta hora é considerado que o player já passou por este obstáculo, e com isso ele é desalocado.
+		
+		Tempo de Vida: seu tempo de vida será desde o momento em que ele é criado (quando o jogador faz um pulo) até o momento em que ele passa do jogador (considera-se que o jogador passou por aquele obstáculo).
+		
+		Alocação: ele será criado, e posteriormente alocado na array, quando o player faz um pulo. Todos os obstáculos vão contra o jogador 'ao mesmo tempo'.
+		
+		Desalocação: será desalocado quando estiver passado do jogador, ou seja, quando sua localização for menor que a localização do jogador, que nesta hora é considerado que o player já passou por este obstáculo, e com isso ele é desalocado.
 	--]]
 end
 
@@ -49,8 +45,16 @@ function love.keypressed( key )
 		if key == 'up' then
 			comecou=true
 			if player.velpulo == 0 then
-				table.insert(obstaculos,{ x=larguratela,  y=400, larg=100, alt=100,vel=(obstaculos[#obstaculos].vel*1.05)}) --Aqui é criado um novo obstáculo, que é o que será 'jogado no jogo' (o que está no índice 0 serve apenas como referência de criação para os outros).
+				local randalt=math.random(100,150)
+				local alty=altlinha-5-randalt
+				local obstaculo={x=larguratela,y=alty, larg=100, alt=randalt}
+				table.insert(obstaculos,obstaculo) --Aqui é criado um novo obstáculo, que é o que será 'jogado no jogo' (será sempre uma cópia do obstáculo dito anteriormente (comando acima) ).
 				player.velpulo = player.altpulo
+			end
+		elseif key == 'down' then
+			if player.velpulo ~= 0 then
+				player.y=player.chao
+				player.velpulo=0
 			end
 		end
 	else
@@ -66,8 +70,8 @@ function love.update( dt )
 	if comecou then
 		colidiu()
 		if not perdeu then
-			desc=obstaculos[1].vel*dt
-			obstaculos[1].x=obstaculos[1].x-desc
+			local desc=velocidade*dt
+			deslocarobstaculos(desc)
 			pontuacao=pontuacao+(desc*0.1)
 			testaralturapulo(dt)
 		 	testarplayernochao()
@@ -96,18 +100,20 @@ function desenharelementos()
 end
 
 function desenharobstaculo()
-	love.graphics.setColor(255, 0, 0, 255)
-	love.graphics.rectangle('fill', obstaculos[1].x,obstaculos[1].y, obstaculos[1].larg,obstaculos[1].alt)
-	love.graphics.setColor(255, 255, 255, 255)
-	love.graphics.rectangle('line', obstaculos[1].x,obstaculos[1].y, obstaculos[1].larg,obstaculos[1].alt)
-	love.graphics.setColor(0,0,0, 255)
-	love.graphics.print("X",obstaculos[1].x+30,obstaculos[1].y+15,0,2,2,0,0,0,0)
-	love.graphics.setColor(255, 255, 255, 255)
+	for index,v in pairs(obstaculos) do
+		love.graphics.setColor(255, 0, 0, 255)
+		love.graphics.rectangle('fill',v.x, v.y, v.larg, v.alt)
+		love.graphics.setColor(255, 255, 255, 255)
+		love.graphics.rectangle('line',v.x, v.y, v.larg, v.alt)
+		love.graphics.setColor(0,0,0, 255)
+		love.graphics.print("X",v.x+30,v.y+15,0,2,2,0,0,0,0)
+		love.graphics.setColor(255, 255, 255, 255)
+	end
 end
 
 function desenharlinha()
 	love.graphics.setLineWidth(10)
-	love.graphics.line(0,505,larguratela,505)
+	love.graphics.line(0,altlinha,larguratela,altlinha)
 	love.graphics.setLineWidth(1)
 end
 
@@ -133,16 +139,21 @@ function testarplayernochao()
 end
 
 function obstaculopassou()
-	if obstaculos[1].x<-100 then
-		table.remove(obstaculos,1) --Nesta hora é desalocado um obstáculo, pois é visto que o obstáculo já passou pelo player, e o player passou por cima do obstáculo.
+	for index,v in pairs(obstaculos) do
+		if(v.x<-100) then
+			table.remove(obstaculos,index) --Nesta hora é desalocado um obstáculo, pois é visto que o obstáculo já passou pelo player, e o player passou por cima do obstáculo.
+			velocidade=velocidade*1.05
+		end
 	end
 end
 
 function colidiu()
-	perdeu = (player.x+player.larg >= obstaculos[1].x) and 
-		  (player.x <= obstaculos[1].x+obstaculos[1].larg) and
-		  (player.y+player.alt >= obstaculos[1].y) and 
-		  (player.y <= obstaculos[1].y+obstaculos[1].alt) 
+	for index,v in pairs(obstaculos) do
+		perdeu = perdeu or (player.x+player.larg >= v.x) and 
+						  (player.x <= v.x+v.larg) and
+						  (player.y+player.alt >= v.y) and 
+						  (player.y <= v.y+v.alt)
+	end
 		  --[[Nesta hora é testado se o obstáculo colidiu com o jogador, fazendo com que a partida seja terminada, informando pontuação do jogo, pontuação média, e dando as opções de recomeçar ou de sair do jogo. Observação: o obstáculo testado é aquele que está se movendo na tela (no caso o de índice 1 da array).
 		  --]]
 end
@@ -169,4 +180,10 @@ function pontuacaomedia()
 		sum=sum+ultimaspontuacoes[i]
 	end
 	return sum/#ultimaspontuacoes
+end
+
+function deslocarobstaculos(desc)
+	for index,v in pairs(obstaculos) do
+		v.x=v.x-desc
+	end
 end

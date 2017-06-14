@@ -24,7 +24,7 @@ ehaprovado: Aluno -> Bool
 ehaprovado a = (media a)>=7
 
 nomemedia: Aluno -> (String,Float)
-nomemedia (nome,n1,n2) = (nome,media (nome,n1,n2))
+nomemedia a = (nome a,media a)
 
 -- Por fim, considere as assinaturas para as funções map, filter, e fold a seguir:
 

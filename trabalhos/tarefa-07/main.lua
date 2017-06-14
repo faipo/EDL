@@ -4,15 +4,7 @@ ultimaspontuacoes={}
 velocidade=(100/1.05)
 altlinha=505
 
-function love.load(  )
-	player={ x=50,  y=400, larg=75, alt=100,chao=400,velpulo=0,altpulo=-200,gravidade=-100}
-	adicionouultima=false
-	pontuacao=0	
-	love.graphics.setFont(love.graphics.newFont(30))
-	perdeu=false
-	comecou=false
-	obstaculos={}
-	--[[
+--[[
 	Tarefa 07
 	Sobre a array 'obstaculos':
 	Escopo: Como no 'default' de toda variável em lua, a array 'obstáculos' é uma variável global, ou seja, pode ser vista em todo o programa.
@@ -23,8 +15,17 @@ function love.load(  )
 	
 	Desalocação: A desalocação acontece quando o jogo é encerrado (fechar na janela, ou, ao perder, apertando a tecla 'S').
 	
-	Observação: A cada começo de partida, a array 'obstaculos' é 'resetada'.
-	--]]
+	Observação: A cada começo de partida, a array 'obstaculos' é 'resetada', já havendo um elemento na posição 0, que servirá de referência para criação dos outros obstáculos, ao longo do jogo.
+--]]
+
+function love.load(  )
+	player={ x=50,  y=400, larg=75, alt=100,chao=400,velpulo=0,altpulo=-200,gravidade=-100}
+	adicionouultima=false
+	pontuacao=0	
+	love.graphics.setFont(love.graphics.newFont(30))
+	perdeu=false
+	comecou=false
+	obstaculos={}
 	--[[
 		Tarefa 07
 		Sobre um objeto da array 'obstaculos':
@@ -138,9 +139,9 @@ function testarplayernochao()
 end
 
 function obstaculopassou()
-	for index,v in pairs(obstaculos) do
-		if(v.x<-100) then
-			table.remove(obstaculos,index) --Nesta hora é desalocado um obstáculo, pois é visto que o obstáculo já passou pelo player, e o player passou por cima do obstáculo.
+	for i=#obstaculos,1,-1 do
+		if(obstaculos[i].x<-100) then
+			table.remove(obstaculos,i) --Nesta hora é desalocado um obstáculo, pois é visto que o obstáculo já passou pelo player, e o player passou por cima do obstáculo.
 			velocidade=velocidade*1.05
 		end
 	end
@@ -153,7 +154,7 @@ function colidiu()
 						  (player.y+player.alt >= v.y) and 
 						  (player.y <= v.y+v.alt)
 	end
-		  --[[Nesta hora é testado se um obstáculo colidiu com o jogador, fazendo com que a partida seja terminada, informando pontuação do jogo, pontuação média, e dando as opções de recomeçar ou de sair do jogo..
+		  --[[Nesta hora é testado se o obstáculo colidiu com o jogador, fazendo com que a partida seja terminada, informando pontuação do jogo, pontuação média, e dando as opções de recomeçar ou de sair do jogo. Observação: o obstáculo testado é aquele que está se movendo na tela (no caso o de índice 1 da array).
 		  --]]
 end
 

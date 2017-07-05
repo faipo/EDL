@@ -7,7 +7,7 @@ posicoesnuvens={ {30,50},{415,50},{800,50}}
 nuvens={love.graphics.newImage("nuvem.png"),love.graphics.newImage("nuvem.png"),love.graphics.newImage("nuvem.png"),["desc"]=20,["descmax"]=75}
 love.graphics.setBackgroundColor(51,113,160)
 
--- trabalho-08 - Closure do jogador
+-- trabalho-08 -  Closure do jogador
 function novojogador (x,y,larg,alt,chao,velpulo,altpulo,gravidade)
   return {
     nochao=function()
@@ -191,7 +191,7 @@ function desenharnuvens()
 	love.graphics.draw(nuvens[3], posicoesnuvens[3][1],posicoesnuvens[3][2],0,0.8,0.5,0,0,0,0)
 end
 
--- trabalho-08 - Corrotina para movimentar nuvens retangularmente
+-- trabalho-08 -  Co-rotina para movimentar nuvens retangularmente
 function movernuvem()
 	while true do
 		for i=1,nuvens["descmax"] do
